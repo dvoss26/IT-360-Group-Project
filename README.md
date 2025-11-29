@@ -5,7 +5,7 @@
 ---
 
 ## 📌 Project Overview
-The Browser Forensics Collection Tool is a Linux-based forensic acquisition utility designed to extract and preserve browser artifacts from Firefox (Snap) and Chromium-based browsers. This tool automates the collection of browsing history, cookies, download history, Firefox cache2 contents, session data, form history, raw SQLite databases, SHA-256 integrity hashes, and a consolidated summary directory for fast review. The goal is to provide a reliable, repeatable, and integrity-focused method for gathering browser artifacts in a digital forensics setting.
+The Browser Forensics Collection Tool is a Linux-based forensic acquisition utility designed to extract and preserve browser artifacts from Firefox (Snap) and Chromium-based browsers. This tool automates the collection of browsing history, cookies, Firefox cache2 contents, session data, form history, raw SQLite databases, SHA-256 integrity hashes, and a consolidated summary directory for fast review. The goal is to provide a reliable, repeatable, and integrity-focused method for gathering browser artifacts in a digital forensics setting.
 
 ---
 
@@ -18,7 +18,6 @@ Automatically detects Firefox Snap profiles located at:
 ### ✔ Extracts Key Browser Evidence
 - Browsing history (CSV + SQLite)
 - Cookies (CSV + SQLite)
-- Download history (CSV)
 - Full Firefox cache2 directory
 - Session data (sessionstore.jsonlz4)
 - Form history (formhistory.sqlite)
@@ -31,8 +30,7 @@ Automatically detects Firefox Snap profiles located at:
 ### ✔ Summary Directory
 Creates a folder containing:
 - History CSV  
-- Cookies CSV  
-- Downloads CSV  
+- Cookies CSV   
 - Form history CSV  
 - Session data  
 
@@ -54,7 +52,6 @@ browser-forensics-tool/
 │   └── sample_output/
 │       ├── history_sample.csv
 │       ├── cookies_sample.csv
-│       ├── downloads_sample.csv
 │       └── evidence_tree_sample.txt
 ├── docs/
 │   └── final_report.docx
@@ -117,12 +114,10 @@ firefox_snap_artifacts_2025.../
 ├── summary/
 │   ├── firefox_history_<profile>.csv
 │   ├── firefox_cookies_<profile>.csv
-│   └── firefox_downloads_<profile>.csv
 └── firefox_profiles/
     └── <profile>/
         ├── places.sqlite
         ├── cookies.sqlite
-        ├── downloads.sqlite
         ├── history_<profile>.csv
         ├── cookies_<profile>.csv
         ├── downloads_<profile>.csv
