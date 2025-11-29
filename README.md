@@ -74,55 +74,70 @@ sudo apt install sqlite3 tree -y
 
 ---
 
-## ▶️ How to Run the Tool
+📘 How to Run the Tool
 
-1. Clone the Repository  
-git clone https://github.com/<your-username>/<repo-name>.git  
+1. Clone the Repository
+Clone the project and move into the repository directory:
+git clone https://github.com/<your-username>/<repo-name>.git
 cd <repo-name>
 
-2. Make the script executable  
-chmod +x src/collect_firefox_snap.sh
+2. Make the Script Executable
+Give the collection script permission to run:
+chmod +x collect_firefox_snap.sh
 
-3. Create an output directory  
+3. Create an Output Directory
+This directory will store all browser artifacts collected by the tool:
 mkdir ~/browser_evidence
 
-4. Run the tool  
-./src/collect_firefox_snap.sh ~/browser_evidence
+4. Run the Tool
+Provide the output directory you just created:
+./collect_firefox_snap.sh ~/browser_evidence
 
-5. View your results  
-cd ~/browser_evidence  
-ls  
+5. View Your Results
+Navigate into the evidence directory and inspect the output:
+cd ~/browser_evidence
+ls
 tree .
 
-You will see a directory like:
+You will see a directory named:
 firefox_snap_artifacts_<timestamp>/
 
-Inside will be:
-- firefox_profiles/  
-- summary/  
-- manifest_<timestamp>.csv  
-- collection_info.txt  
-- timestamp.tar.gz archive  
+Inside that folder, you will find:
+
+- collection_info.txt — metadata about the collection (timestamp, user, hostname)
+- manifest_<timestamp>.csv — SHA-256 hashes for every copied/exported artifact
+- firefox_profiles/ — extracted Firefox profile data
+- firefox_snap_artifacts_<timestamp>.tar.gz — compressed archive of the full evidence set
 
 ---
 
 ## 📦 Example Output Structure
 
-firefox_snap_artifacts_2025.../
-├── collection_info.txt
-├── manifest_2025...csv
-├── summary/
-│   ├── firefox_history_<profile>.csv
-│   ├── firefox_cookies_<profile>.csv
-└── firefox_profiles/
-    └── <profile>/
-        ├── places.sqlite
-        ├── cookies.sqlite
-        ├── history_<profile>.csv
-        ├── cookies_<profile>.csv
-        ├── downloads_<profile>.csv
-        ├── cache2/
-        └── sessionstore.jsonlz4
+browser_evidence/
+└── firefox_snap_artifacts_<timestamp>/
+    ├── collection_info.txt
+    ├── manifest_<timestamp>.csv
+    └── firefox_profiles/
+        └── <profile>/                         # ex: 4w5y56z.default
+            ├── cache2/
+            │   └── entries/                   # ⚠ ~2000+ files
+            │       # These are Firefox Cache2 entry files.
+            │       # Each file represents cached web content such as images,
+            │       # HTML fragments, scripts, JSON responses, and media.
+            │       # Filenames look like hashes, but they are internal cache keys.
+            │       # The tool hashes each file for integrity in the manifest.
+            │
+            ├── history_<profile>.csv          # Parsed browsing history (readable)
+            ├── cookies_<profile>.csv          # Parsed cookies (readable)
+            │
+            ├── places.sqlite                  # Raw Firefox history database
+            ├── cookies.sqlite                 # Raw cookie database
+            ├── formhistory.sqlite
+            ├── logins.json                    # Encrypted saved login data
+            ├── key4.db                        # Encryption key database
+            ├── sessionstore.jsonlz4           # Session/tab recovery data
+            └── (other Firefox profile files)
+
 
 ---
 
