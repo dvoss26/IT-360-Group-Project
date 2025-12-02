@@ -76,24 +76,24 @@ sudo apt install sqlite3 tree -y
 
 📘 How to Run the Tool
 
-1. Clone the Repository
+1. Clone the Repository - 
 Clone the project and move into the repository directory:
 git clone https://github.com/<your-username>/<repo-name>.git
 cd <repo-name>
 
-2. Make the Script Executable
+2. Make the Script Executable - 
 Give the collection script permission to run:
 chmod +x collect_firefox_snap.sh
 
-3. Create an Output Directory
+3. Create an Output Directory - 
 This directory will store all browser artifacts collected by the tool:
 mkdir ~/browser_evidence
 
-4. Run the Tool
+4. Run the Tool - 
 Provide the output directory you just created:
 ./collect_firefox_snap.sh ~/browser_evidence
 
-5. View Your Results
+5. View Your Results - 
 Navigate into the evidence directory and inspect the output:
 cd ~/browser_evidence
 ls
