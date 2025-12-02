@@ -145,12 +145,11 @@ browser_evidence/
 
 ---
 
-## ⚠️ Forensic Safety Notes
-- Only collect browser data on systems you have permission to analyze.  
-- Do NOT upload sensitive raw databases such as:
-  cookies.sqlite, logins.json, key4.db, sessionstore.jsonlz4  
-- Only sanitized CSV exports from test browsing should be uploaded.
+🎥 Video Walkthrough
 
+A full demonstration of the Browser Forensics Collection Tool — including setup, execution, and evidence analysis — is available here:
+
+🔗 https://youtu.be/beWk0iBWPew
 ---
 
 ## 👥 Authors
