@@ -112,31 +112,34 @@ Inside that folder, you will find:
 ---
 
 ## 📦 Example Output Structure
+## 📦 Example Output Structure
 
+```text
 browser_evidence/
 └── firefox_snap_artifacts_<timestamp>/
     ├── collection_info.txt
     ├── manifest_<timestamp>.csv
     └── firefox_profiles/
-        └── <profile>/                         # ex: 4w5y56z.default
-            ├── cache2/
-            │   └── entries/                   # ⚠ ~2000+ files
-            │       # These are Firefox Cache2 entry files.
-            │       # Each file represents cached web content such as images,
-            │       # HTML fragments, scripts, JSON responses, and media.
-            │       # Filenames look like hashes, but they are internal cache keys.
-            │       # The tool hashes each file for integrity in the manifest.
-            │
-            ├── history_<profile>.csv          # Parsed browsing history (readable)
-            ├── cookies_<profile>.csv          # Parsed cookies (readable)
-            │
-            ├── places.sqlite                  # Raw Firefox history database
-            ├── cookies.sqlite                 # Raw cookie database
-            ├── formhistory.sqlite
-            ├── logins.json                    # Encrypted saved login data
-            ├── key4.db                        # Encryption key database
-            ├── sessionstore.jsonlz4           # Session/tab recovery data
-            └── (other Firefox profile files)
+        └── <profile>/        # ex: 4w5y56z.default
+            └── cache2/
+                └── entries/  # ⚠ ~2000+ files
+                    # These are Firefox Cache2 entry files.
+                    # Each file represents cached web content such as images,
+                    # HTML fragments, scripts, JSON responses, and media.
+                    # Filenames look like hashes, but they are internal cache keys.
+                    # The tool hashes each file for integrity in the manifest.
+
+            history_<profile>.csv   # Parsed browsing history (readable)
+            cookies_<profile>.csv   # Parsed cookies (readable)
+
+        places.sqlite              # Raw Firefox history database
+        cookies.sqlite             # Raw cookie database
+        formhistory.sqlite         # Form history
+        logins.json                # Encrypted saved login data
+        key4.db                    # Encryption key database
+        sessionstore.jsonlz4       # Session/tab recovery
+        (other Firefox profile files)
+```
 
 
 ---
