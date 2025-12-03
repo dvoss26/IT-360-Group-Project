@@ -116,7 +116,6 @@ Inside that folder, you will find:
 ---
 
 ## 📦 Example Output Structure
-## 📦 Example Output Structure
 
 ```text
 browser_evidence/
