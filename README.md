@@ -43,6 +43,8 @@ A tar.gz archive of the entire evidence directory is automatically created.
 
 ---
 
+
+```text
 ## 📁 Repository Structure
 
 browser-forensics-tool/
@@ -56,6 +58,8 @@ browser-forensics-tool/
 ├── docs/
 │   └── final_report.docx
 └── README.md
+
+```
 
 ---
 
